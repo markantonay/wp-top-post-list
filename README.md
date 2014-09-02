@@ -1,2 +1,6 @@
-wp-top-post-list
-================
+
+Top Post List Wordpress Plugin
+
+Consist of creating custom post type.
+
+Still in WIP
