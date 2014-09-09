@@ -13,6 +13,7 @@ class MG_Top_Post_List {
 	public function __construct ()
 	{
 		$this->register_post_type();
+		$this->taxonomies();
 	}
 	public function register_post_type()
 	{
@@ -31,17 +32,47 @@ class MG_Top_Post_List {
 			),
 			'query_var' => 'toppost',
 			'rewrite' => array (
-				'slug' => 'top-post-list/',
+				'slug' => 'top-post-list',
 			),
 			'public' => true,
-			'support' => array (
-				'title',
-				'thumbnail',
-				'editor'
+			'supports' => array (
+				'title',				
+				'editor',
+				'thumbnail'				
 			)
 		);
 		register_post_type('mg-top-post-list',$arg);
+		
 	}	
+	public function taxonomies()
+	{
+	
+		$labels = array(
+				'name' => 'Top List',
+				'singular_name' => 'Top List',
+				'edit_item' => 'Edit Item',
+				'update_item' => 'Update Item',
+				'add_new_item' => 'Add Item',
+				'new_item_name' => 'Add New Item',
+				'all_items' => 'All Items',
+				'search_items' => 'Search Item',
+				'popular_items' => 'Search Item',
+				'separate_item_with_comments' => 'Separate items with commas',
+				'add_or_remove_items' => 'Add or remove item',
+				'choose_from_most_used' => 'Choose from most used'			
+		);
+		
+		$args = array(
+			'hierarchical' => true,
+			'labels' => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var' => 'top_list',
+			);
+		register_taxonomy('top_list', array('mg-top-post-list'), $args);
+		
+	}
+	
 
 }
 
